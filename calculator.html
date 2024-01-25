@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="calulator.css">
+    <script src="calculadora.css"></script>
+</head>
+<body>
+    <div class="corpo">
+        <div>
+            <h2>Calculadora</h2>
+            <p style="height: 20px; text-align: right;" id="numeros">faça seus cáculos</p>
+            <hr>
+        </div>
+        <div>
+            <button onclick="adicionarNumero(7)">7</button>
+            <button onclick="adicionarNumero(8)">8</button>
+            <button onclick="adicionarNumero(9)">9</button>
+            <button style="background-color:#7f8c8d;color:yellow"   onclick="adicionarOperacao('*')" >*</button>
+        </div>
+        <div>
+            <button onclick="adicionarNumero(4)">4</button>
+            <button onclick="adicionarNumero(5)">5</button>
+            <button onclick="adicionarNumero(6)">6</button>
+            <button style="background-color:#7f8c8d;color:yellow"  onclick="adicionarOperacao('/')">/</button>
+        </div>
+        <div>
+            <button onclick="adicionarNumero(1)">1</button>
+            <button onclick="adicionarNumero(2)">2</button>
+            <button onclick="adicionarNumero(3)">3</button>
+            <button style="background-color:#7f8c8d; color:yellow;" onclick="adicionarOperacao('-')">-</button>
+        </div>
+        <div>
+            <button style="padding-right: 27px;" onclick="limpar()">deletar</button>
+            <button onclick="adicionarNumero(0)">0</button>
+            <button style="background-color:#7f8c8d; color:yellow;"  onclick="adicionarOperacao('+')">+</button> 
+            <button style="background-color: royalblue; color: aliceblue;" onclick="calcular()">=</button>
+              
+        </div>
+    </div>
+    <script>
+        
+let p = document.getElementById("numeros");
+let tela = "";
+let operacao = "";
+let segundoNumero = "";
+
+function adicionarNumero(numero) {
+    tela += numero;
+    p.innerHTML = tela;
+}
+
+function adicionarOperacao(op) {
+    operacao = op;
+    segundoNumero = tela;
+    tela = "";
+    p.innerHTML = tela;
+}
+
+function limpar() {
+    tela = ''
+  
+    p.innerHTML = '';
+}
+
+function calcular() {
+    if (operacao && segundoNumero) {
+        let resultado = eval(segundoNumero + operacao + tela);
+        tela = resultado.toString();
+        p.innerHTML = tela;
+        operacao = "";
+        segundoNumero = "";
+    }
+}
+    </script>
+
+   
+</body>
+</html>
